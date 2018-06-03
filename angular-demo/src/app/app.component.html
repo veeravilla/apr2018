@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>Welcome to Angular Application</h1>
+
+<h2>Treatment List</h2>
+
+<ul>
+  <li *ngFor="let treatment of treatmentResponse">
+    {{treatment.code}} {{treatment.description + " >>>" + treatment.name}} {{treatment.href}} {{treatment.name}}
+  </li>
+</ul>
+<hr bordeer="1">
+
+<h2>Student List</h2>
+<ul>
+  <li *ngFor="let student of studentResponse">
+    {{student.sno +" , " + student.sname + " , " + student.course + " , " + student.fee}}
+  </li>
+</ul>
+
+Course List
+
+<app-course></app-course>
