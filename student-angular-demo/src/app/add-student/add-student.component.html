@@ -1,0 +1,59 @@
+<div class="alert alert-secondary" role="alert">
+  <h2>Add Student</h2>
+</div>
+
+<form ngForm name="sform" #sform="ngForm" (submit)="addStudent(sform)">
+  <div class="form-group">
+    <label for="sno">Student Number</label>
+    <input ngModel name="sno" type="text" class="form-control" id="sno">
+  </div>
+
+  <div class="form-group">
+    <label for="sname">Student Name</label>
+    <input required minlength=4 maxlength=20 pattern="Rama" ngModel name="sname" #sname="ngModel" (change)="log(sname)" type="text"
+      class="form-control" id="sname">
+    <div class="alert alert-danger" *ngIf="sname.touched && !sname.valid">
+      <div *ngIf="sname.errors.required">Student Name is required.</div>
+      <div *ngIf="sname.errors.minlength">Student Name should be minimum 4 chars.</div>
+      <div *ngIf="sname.errors.pattern">No Pattern Match</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="course">Course</label>
+
+    <select ngModel name="course" class="form-control" id="course">
+      <option [value]="course.id" *ngFor="let course of courseList">{{course.title}}</option>
+    </select>
+
+    <!--  <select ngModel name="course" class="form-control" id="course">
+        <option value="1">Java</option>
+        <option value="2">.Net</option>
+        <option value="3">MS</option>
+        <option value="4">Angular</option>
+    </select> -->
+  </div>
+
+  <div class="form-group">
+    <label for="fee">Fee</label>
+    <input ngModel name="fee" type="text" class="form-control" id="fee">
+  </div>
+
+  <div ngModelGroup="address">
+    <div class="form-group">
+      <label for="city">City</label>
+      <input ngModel name="city" type="text" class="form-control" id="city">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input ngModel name="state" type="text" class="form-control" id="state">
+    </div>
+  </div>
+
+
+  <div>
+    <p>{{sform.value | json}}</p>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="!sform.valid">Submit</button>
+
+</form>
